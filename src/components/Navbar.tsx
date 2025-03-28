@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const menuItems = [
     { title: 'Problem', link: '/problem' },
@@ -17,6 +18,10 @@ const Navbar = () => {
     { title: 'Roadmap', link: '/roadmap' },
     { title: 'Contact', link: '/contact' },
   ];
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
 
   return (
     <nav className="fixed top-0 w-full z-50 glass-panel backdrop-blur-md bg-cyber-darkPurple/90 border-b border-white/10">
@@ -35,13 +40,17 @@ const Navbar = () => {
                 <Link
                   key={item.title}
                   to={item.link}
-                  className="text-cyber-lightGray hover:text-cyber-blue transition-colors duration-200 px-2 py-1 text-sm"
+                  className={`px-2 py-1 text-sm transition-colors duration-200 ${
+                    isActive(item.link)
+                      ? 'text-cyber-blue'
+                      : 'text-cyber-lightGray hover:text-cyber-blue'
+                  }`}
                 >
                   {item.title}
                 </Link>
               ))}
-              <Button className="ml-4 bg-cyber-blue hover:bg-cyber-blue/80 text-white">
-                Request Demo
+              <Button asChild className="ml-4 bg-cyber-blue hover:bg-cyber-blue/80 text-white">
+                <Link to="/contact">Request Demo</Link>
               </Button>
             </div>
           </div>
@@ -66,17 +75,22 @@ const Navbar = () => {
               <Link
                 key={item.title}
                 to={item.link}
-                className="block px-3 py-2 text-cyber-lightGray hover:text-cyber-blue"
+                className={`block px-3 py-2 ${
+                  isActive(item.link)
+                    ? 'text-cyber-blue'
+                    : 'text-cyber-lightGray hover:text-cyber-blue'
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.title}
               </Link>
             ))}
             <Button 
+              asChild
               className="w-full mt-3 bg-cyber-blue hover:bg-cyber-blue/80 text-white"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Request Demo
+              <Link to="/contact">Request Demo</Link>
             </Button>
           </div>
         </div>

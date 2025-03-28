@@ -9,6 +9,9 @@ import Problem from "./pages/Problem";
 import Solution from "./pages/Solution";
 import Features from "./pages/Features";
 import Technology from "./pages/Technology";
+import Architecture from "./pages/Architecture";
+import Benefits from "./pages/Benefits";
+import Roadmap from "./pages/Roadmap";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +29,9 @@ const App = () => (
           <Route path="/solution" element={<Solution />} />
           <Route path="/features" element={<Features />} />
           <Route path="/technology" element={<Technology />} />
+          <Route path="/architecture" element={<Architecture />} />
+          <Route path="/benefits" element={<Benefits />} />
+          <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
