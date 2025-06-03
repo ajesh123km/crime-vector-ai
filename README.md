@@ -7,7 +7,6 @@
 ## How can I edit this code?
     
 There are several ways of editing your application.
-  
 
 Simply visit the ((http://10.1.48.117:8080/)) and start prompting.
 
